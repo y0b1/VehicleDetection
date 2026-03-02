@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
-import { Activity, AlertCircle } from 'lucide-react'
+import { Car, AlertCircle } from 'lucide-react'
 
 import UploadPanel from './components/UploadPanel'
 import BenchmarkControls from './components/BenchmarkControls'
@@ -101,9 +101,9 @@ export default function App() {
         className="sticky top-0 z-10 flex items-center gap-3 px-6 py-4"
         style={{ background: '#0d0d0d', borderBottom: '1px solid #1a1a1a' }}
       >
-        <Activity className="w-6 h-6" style={{ color: '#6366f1' }} />
-        <span className="text-[#f4f4f5] font-bold text-lg tracking-tight">BenchmarkCV</span>
-        <span className="text-[#71717a] text-sm ml-1">/ Vehicle Detection</span>
+        <Car className="w-6 h-6" style={{ color: '#6366f1' }} />
+        <span className="text-[#f4f4f5] font-bold text-lg tracking-tight">CS-020</span>
+        <span className="text-[#71717a] text-sm ml-1"> Vehicle Detection</span>
       </header>
 
       <main className="p-6 max-w-[1600px] mx-auto">
@@ -155,7 +155,7 @@ export default function App() {
                 className="rounded-xl border border-dashed border-[#222222] p-16 text-center"
                 style={{ background: '#0d0d0d' }}
               >
-                <Activity className="w-12 h-12 mx-auto mb-4" style={{ color: '#333333' }} />
+                <Car className="w-12 h-12 mx-auto mb-4" style={{ color: '#333333' }} />
                 <p className="text-[#71717a] font-medium">No results yet</p>
                 <p className="text-[#333333] text-sm mt-1">
                   Upload a file and run the benchmark, or load sample data to preview the UI
