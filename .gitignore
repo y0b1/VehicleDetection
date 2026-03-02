@@ -1,0 +1,18 @@
+# Uploaded benchmark files
+benchmark/backend/uploads/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+*.pt
+*.pth
+
+# Node
+benchmark/frontend/node_modules/
+benchmark/frontend/dist/
+
+# OS
+.DS_Store
+Thumbs.db
