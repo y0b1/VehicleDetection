@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Loader2, ImageOff } from 'lucide-react'
 import { getPreview } from '../lib/api'
 
-const CONFIGS = ['YOLOv8', 'YOLOv9', 'NMS Ensemble', 'WBF Ensemble']
+const CONFIGS = ['YOLOv8', 'RT-DETR', 'NMS Ensemble', 'WBF Ensemble']
 
 export default function FramePreview({ jobId }) {
   const [previews, setPreviews] = useState({})

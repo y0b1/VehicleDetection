@@ -103,8 +103,8 @@ class BenchmarkRunner:
                 yolo_ms, yolo_fps = 15.2, 65.8
             self._progress[job_id]['progress'] = 20
 
-            # ── 2. YOLOv9 ────────────────────────────────────────────
-            self._progress[job_id].update({'current_config': 'YOLOv9', 'progress': 20})
+            # ── 2. RT-DETR ────────────────────────────────────────────
+            self._progress[job_id].update({'current_config': 'RT-DETR', 'progress': 20})
             if self.effdet_runner:
                 eff_preds, eff_ms, eff_fps = self.effdet_runner.run_inference(frames)
             else:
@@ -139,7 +139,7 @@ class BenchmarkRunner:
             results = {}
             for config, preds, ms, fps in [
                 ('YOLOv8',       yolo_preds, yolo_ms, yolo_fps),
-                ('YOLOv9',       eff_preds,  eff_ms,  eff_fps),
+                ('RT-DETR',       eff_preds,  eff_ms,  eff_fps),
                 ('NMS Ensemble', nms_preds,  nms_ms,  1000 / nms_ms if nms_ms > 0 else 0),
                 ('WBF Ensemble', wbf_preds,  wbf_ms,  1000 / wbf_ms if wbf_ms > 0 else 0),
             ]:
@@ -151,7 +151,7 @@ class BenchmarkRunner:
             # ── 7. Store first-frame detections for preview ───────────
             self._previews[job_id] = {
                 'YOLOv8':       yolo_preds[0] if yolo_preds else {},
-                'YOLOv9':       eff_preds[0]  if eff_preds  else {},
+                'RT-DETR':       eff_preds[0]  if eff_preds  else {},
                 'NMS Ensemble': nms_preds[0]  if nms_preds  else {},
                 'WBF Ensemble': wbf_preds[0]  if wbf_preds  else {},
             }
@@ -185,7 +185,7 @@ class BenchmarkRunner:
                 'mAP50': 0.8945, 'mAP5095': 0.7234,
                 'avg_inference_ms': 15.2, 'fps': 65.8
             },
-            'YOLOv9': {
+            'RT-DETR': {
                 'precision': 0.9312, 'recall': 0.9054, 'f1': 0.9181,
                 'mAP50': 0.9067, 'mAP5095': 0.7490,
                 'avg_inference_ms': 22.0, 'fps': 45.5

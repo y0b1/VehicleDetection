@@ -1,6 +1,6 @@
 import { CheckCircle2, Loader2, Circle } from 'lucide-react'
 
-const CONFIGS = ['YOLOv8', 'YOLOv9', 'NMS Ensemble', 'WBF Ensemble']
+const CONFIGS = ['YOLOv8', 'RT-DETR', 'NMS Ensemble', 'WBF Ensemble']
 
 function getConfigStatus(config, currentConfig, overallStatus) {
   if (overallStatus === 'done') return 'done'

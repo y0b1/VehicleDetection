@@ -9,10 +9,10 @@ import {
   Cell,
 } from 'recharts'
 
-const CONFIGS = ['YOLOv8', 'YOLOv9', 'NMS Ensemble', 'WBF Ensemble']
+const CONFIGS = ['YOLOv8', 'RT-DETR', 'NMS Ensemble', 'WBF Ensemble']
 const COLORS = {
   'YOLOv8': '#6366f1',
-  'YOLOv9': '#f59e0b',
+  'RT-DETR': '#f59e0b',
   'NMS Ensemble': '#22c55e',
   'WBF Ensemble': '#ec4899',
 }

@@ -1,4 +1,4 @@
-const CONFIGS = ['YOLOv8', 'YOLOv9', 'NMS Ensemble', 'WBF Ensemble']
+const CONFIGS = ['YOLOv8', 'RT-DETR', 'NMS Ensemble', 'WBF Ensemble']
 
 const METRICS = [
   { key: 'precision',        label: 'Precision',        higherBetter: true,  format: v => `${(v * 100).toFixed(1)}%` },

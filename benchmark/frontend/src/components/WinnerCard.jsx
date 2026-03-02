@@ -1,6 +1,6 @@
 import { Trophy, Zap, BarChart2, Target } from 'lucide-react'
 
-const CONFIGS = ['YOLOv8', 'YOLOv9', 'NMS Ensemble', 'WBF Ensemble']
+const CONFIGS = ['YOLOv8', 'RT-DETR', 'NMS Ensemble', 'WBF Ensemble']
 
 export default function WinnerCard({ results }) {
   const bestAccuracy = CONFIGS.reduce((best, c) =>

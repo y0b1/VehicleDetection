@@ -1,28 +1,29 @@
 import time
-from ultralytics import YOLO
+from ultralytics import RTDETR
 
 
 class EfficientDetRunner:
     """
-    YOLOv9s-backed runner (replaces EfficientDet for compatibility).
-    Falls back to YOLOv8s if the current ultralytics version doesn't support YOLOv9.
+    RT-DETR (Real-Time Detection Transformer) runner.
+    Transformer-based architecture — architecturally distinct from YOLO's CNN backbone.
+    Falls back to rtdetr-x if rtdetr-l is unavailable.
     """
 
     def __init__(self, model_size='d0'):
         self.model = None
         self.model_name = None
 
-        for candidate in ('yolov9s.pt', 'yolov8s.pt'):
+        for candidate in ('rtdetr-l.pt', 'rtdetr-x.pt'):
             try:
-                self.model = YOLO(candidate)
+                self.model = RTDETR(candidate)
                 self.model_name = candidate
-                print(f"Loaded second model: {candidate}")
+                print(f"Loaded RT-DETR model: {candidate}")
                 break
             except Exception as e:
                 print(f"Could not load {candidate}: {e}")
 
         if self.model is None:
-            print("Warning: No second model available. Using mock implementation.")
+            print("Warning: RT-DETR unavailable. Using mock implementation.")
 
     def run_inference(self, frames):
         """
