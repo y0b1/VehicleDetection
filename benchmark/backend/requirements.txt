@@ -1,0 +1,11 @@
+flask==3.0.0
+flask-cors==4.0.0
+ultralytics>=8.1.0
+torch==2.1.2
+torchvision==0.16.2
+numpy==1.24.3
+opencv-python==4.8.1.78
+ensemble-boxes==1.0.9
+timm==0.9.10
+effdet==0.4.1
+Pillow==10.1.0
