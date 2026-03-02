@@ -1,5 +1,6 @@
-# Uploaded benchmark files
-benchmark/backend/uploads/
+# Uploaded benchmark files (keep folder, ignore contents)
+benchmark/backend/uploads/*
+!benchmark/backend/uploads/.gitkeep
 
 # Python
 __pycache__/
