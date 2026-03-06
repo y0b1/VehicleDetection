@@ -1,4 +1,4 @@
-import { Trophy, Zap, BarChart2, Target } from 'lucide-react'
+import { Trophy, Zap, BarChart2, Target, Activity } from 'lucide-react'
 
 const CONFIGS = ['YOLOv8', 'RT-DETR', 'NMS Ensemble', 'WBF Ensemble']
 
@@ -13,10 +13,17 @@ export default function WinnerCard({ results }) {
   const maxMAP = Math.max(...CONFIGS.map(c => results[c]?.mAP50 ?? 0)) || 1
   const maxFPS = Math.max(...CONFIGS.map(c => results[c]?.fps ?? 0)) || 1
   const bestTradeoff = CONFIGS.reduce((best, c) => {
-    const scoreC = 0.6 * ((results[c]?.mAP50 ?? 0) / maxMAP) + 0.4 * ((results[c]?.fps ?? 0) / maxFPS)
+    const scoreC    = 0.6 * ((results[c]?.mAP50 ?? 0) / maxMAP) + 0.4 * ((results[c]?.fps ?? 0) / maxFPS)
     const scoreBest = 0.6 * ((results[best]?.mAP50 ?? 0) / maxMAP) + 0.4 * ((results[best]?.fps ?? 0) / maxFPS)
     return scoreC > scoreBest ? c : best
   })
+
+  const hasTemporalData = CONFIGS.some(c => results[c]?.temporal_consistency != null)
+  const bestStability = hasTemporalData
+    ? CONFIGS.reduce((best, c) =>
+        (results[c]?.temporal_consistency ?? 0) > (results[best]?.temporal_consistency ?? 0) ? c : best
+      )
+    : null
 
   const cards = [
     {
@@ -40,7 +47,18 @@ export default function WinnerCard({ results }) {
       color: '#6366f1',
       stat: 'Balanced score (60% acc + 40% spd)',
     },
+    ...(bestStability ? [{
+      label: 'Best Stability',
+      winner: bestStability,
+      icon: Activity,
+      color: '#06b6d4',
+      stat: `${((results[bestStability]?.temporal_consistency ?? 0) * 100).toFixed(1)}% frame-to-frame IoU`,
+    }] : []),
   ]
+
+  const gridCols = cards.length === 4
+    ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4'
+    : 'grid-cols-1 sm:grid-cols-3'
 
   return (
     <div className="bg-[#111111] border border-[#222222] rounded-xl p-5">
@@ -48,7 +66,7 @@ export default function WinnerCard({ results }) {
         <Trophy className="w-5 h-5 text-[#f59e0b]" />
         Winners
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div className={`grid ${gridCols} gap-4`}>
         {cards.map(({ label, winner, icon: Icon, color, stat }) => (
           <div
             key={label}

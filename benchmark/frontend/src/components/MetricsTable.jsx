@@ -1,13 +1,14 @@
 const CONFIGS = ['YOLOv8', 'RT-DETR', 'NMS Ensemble', 'WBF Ensemble']
 
 const METRICS = [
-  { key: 'precision',        label: 'Precision',        higherBetter: true,  format: v => `${(v * 100).toFixed(1)}%` },
-  { key: 'recall',           label: 'Recall',           higherBetter: true,  format: v => `${(v * 100).toFixed(1)}%` },
-  { key: 'f1',               label: 'F1 Score',         higherBetter: true,  format: v => `${(v * 100).toFixed(1)}%` },
-  { key: 'mAP50',            label: 'mAP@0.5',          higherBetter: true,  format: v => `${(v * 100).toFixed(1)}%` },
-  { key: 'mAP5095',          label: 'mAP@[.5:.95]',     higherBetter: true,  format: v => `${(v * 100).toFixed(1)}%` },
-  { key: 'avg_inference_ms', label: 'Inference (ms)',   higherBetter: false, format: v => `${v.toFixed(1)} ms` },
-  { key: 'fps',              label: 'FPS',              higherBetter: true,  format: v => v.toFixed(1) },
+  { key: 'precision',             label: 'Precision',           higherBetter: true,  format: v => `${(v * 100).toFixed(1)}%` },
+  { key: 'recall',                label: 'Recall',              higherBetter: true,  format: v => `${(v * 100).toFixed(1)}%` },
+  { key: 'f1',                    label: 'F1 Score',            higherBetter: true,  format: v => `${(v * 100).toFixed(1)}%` },
+  { key: 'mAP50',                 label: 'mAP@0.5',             higherBetter: true,  format: v => `${(v * 100).toFixed(1)}%` },
+  { key: 'mAP5095',               label: 'mAP@[.5:.95]',        higherBetter: true,  format: v => `${(v * 100).toFixed(1)}%` },
+  { key: 'temporal_consistency',  label: 'Temporal Consistency', higherBetter: true,  format: v => `${(v * 100).toFixed(1)}%` },
+  { key: 'avg_inference_ms',      label: 'Inference (ms)',      higherBetter: false, format: v => `${v.toFixed(1)} ms` },
+  { key: 'fps',                   label: 'FPS',                 higherBetter: true,  format: v => v.toFixed(1) },
 ]
 
 export default function MetricsTable({ results }) {
